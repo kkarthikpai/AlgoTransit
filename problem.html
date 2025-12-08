@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem & Solution</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🚌 AlgoTransit</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="problem.html" class="active">Problem & Solution</a></li>
+                <li><a href="tools.html">Tools & Feedback</a></li>
+                <li><a href="findings.html">Findings</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title">🔴 The Problem Statement</h2>
+        <div class="card">
+            <p><strong>Context:</strong> Public buses are vital for cities like Bengaluru, but heavy traffic leads to extreme inefficiency.</p>
+            <ul style="margin-top: 15px; margin-left: 20px;">
+                <li><strong>Erratic Driving:</strong> Sudden acceleration and hard braking significantly increase fuel burn.</li>
+                <li><strong>Excessive Idling:</strong> Research shows idling at signals can raise fuel consumption by <strong>10-15%</strong>.</li>
+                <li><strong>Pollution:</strong> Inefficient driving cycles contribute directly to urban CO2 emissions and smog.</li>
+                <li><strong>Data Gap:</strong> Standard driving cycles often fail to capture the chaotic reality of Indian traffic conditions.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">🟢 Proposed Solution</h2>
+        <div class="card">
+            <h3>The Hybrid MMAS-ABC Framework</h3>
+            <p>We propose a novel AI framework that learns from nature to fix human driving errors:</p>
+            <br>
+            <div class="grid-2">
+                <div style="background: #e8f8f5; padding: 15px; border-radius: 5px;">
+                    <h4>1. Ant Colony Optimization (MMAS)</h4>
+                    <p><strong>Role: Exploration.</strong><br>Like ants finding the efficient path to food, the MMAS algorithm analyzes the raw GPS data to find the "average efficient path," filtering out extreme noise and traffic anomalies.</p>
+                </div>
+                <div style="background: #e8f8f5; padding: 15px; border-radius: 5px;">
+                    <h4>2. Artificial Bee Colony (ABC)</h4>
+                    <p><strong>Role: Refinement.</strong><br>Like bees searching for the best nectar, the ABC algorithm fine-tunes the cycle. It applies "Eco-Driving" rules, such as capping top speed and simulating engine start-stop during idling.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🎯 Project Objectives</h2>
+        <div class="card">
+            <p style="margin-bottom: 20px;">
+                <strong>Main Objective:</strong><br>
+                To develop an optimized bus routing system using the Max-Min Ant System (MMAS) algorithm to optimize travel distance and fuel consumption while improving the overall efficiency of urban transportation.
+            </p>
+
+            <p><strong>Specific Objectives:</strong></p>
+            <ul style="margin-left: 20px; margin-bottom: 20px; line-height: 1.6;">
+                <li>Implement MMAS-ABC framework to generate bus driving cycles from GPS data.</li>
+                <li>Quantify fuel consumption, CO₂ emissions, and idling to identify congestion hotspots.</li>
+                <li>Create data-driven recommendations for route optimization and sustainable planning.</li>
+            </ul>
+
+            <p>
+                <strong>Expected Contributions to the Field:</strong><br>
+                First MMAS-ABC application for Indian bus cycles. Enables data-driven EV deployment and emission reduction supporting net-zero goals for public transport agencies.
+            </p>
+        </div>
+
+    </div>
+
+    <footer><p>RV College of Engineering | AlgoTransit - Project #49</p></footer>
+</body>
+</html>

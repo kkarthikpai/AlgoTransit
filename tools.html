@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools & Feedback</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🚌 AlgoTransit</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="problem.html">Problem & Solution</a></li>
+                <li><a href="tools.html" class="active">Tools & Feedback</a></li>
+                <li><a href="findings.html">Findings</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title">🛠️ Tools & Technologies</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3><i class="fab fa-python" style="color: #3498db;"></i> Programming & Logic</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li><strong>Python 3.9:</strong> Core programming language.</li>
+                    <li><strong>NumPy & Pandas:</strong> For large-scale GPS data processing.</li>
+                    <li><strong>Geopy:</strong> For Geodesic distance calculation.</li>
+                    <li><strong>Matplotlib:</strong> For generating velocity profile graphs.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-cogs" style="color: #e74c3c;"></i> Algorithms & Data</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li><strong>Max-Min Ant System (MMAS):</strong> Path exploration.</li>
+                    <li><strong>Artificial Bee Colony (ABC):</strong> Local optimization.</li>
+                    <li><strong>Ahmedabad-Gandhinagar Bus Dataset:</strong> Source of real-world trajectories.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">💬 Project Feedback</h2>
+        <div class="card" style="max-width: 600px; margin: auto;">
+            <p style="text-align: center; margin-bottom: 20px;">Have suggestions for our prototype? Let us know!</p>
+            
+            <form id="feedbackForm" style="display: flex; flex-direction: column; gap: 15px;">
+                
+                <input type="text" id="senderName" placeholder="Your Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                
+                <input type="email" id="senderEmail" placeholder="Your Email" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                
+                <textarea id="senderMessage" rows="5" placeholder="Your Feedback or Observations..." required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+                
+                <button type="button" class="btn" style="border: none; cursor: pointer; width: 100%;" onclick="submitFeedback()">
+                    <i class="fas fa-paper-plane"></i> Submit Feedback
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer><p>RV College of Engineering | AlgoTransit - Project #49</p></footer>
+
+    <script>
+        function submitFeedback() {
+            // 1. Get the values from the form
+            const name = document.getElementById('senderName').value;
+            const email = document.getElementById('senderEmail').value;
+            const message = document.getElementById('senderMessage').value;
+
+            // 2. Check if they are empty
+            if(name === "" || email === "" || message === "") {
+                alert("⚠️ Please fill in all fields before submitting.");
+                return;
+            }
+
+            // 3. Show Success Message (The Simulation)
+            // This happens instantly and looks like a real submission
+            alert("✅ Success!\n\nThank you, " + name + ".\nYour feedback has been recorded securely.\n\n(Note: This is a prototype simulation)");
+
+            // 4. Clear the form so they can't submit twice
+            document.getElementById('feedbackForm').reset();
+        }
+    </script>
+
+</body>
+</html>
