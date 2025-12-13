@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Outcomes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .outcome-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            border-top: 5px solid #2ecc71;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .outcome-card:hover { transform: translateY(-5px); }
+        .outcome-icon { font-size: 3.5rem; margin-bottom: 20px; display: block; }
+        .outcome-btn {
+            display: inline-block; margin-top: 15px; padding: 10px 20px;
+            background: #2c3e50; color: white; text-decoration: none;
+            border-radius: 5px; font-weight: bold;
+        }
+        .outcome-btn:hover { background: #34495e; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🚌 AlgoTransit</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="problem.html">Problem & Solution</a></li>
+                <li><a href="tools.html">Tools & Feedback</a></li>
+                <li><a href="findings.html">Findings</a></li>
+                <li><a href="outcomes.html" class="active">Outcomes</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title">🚀 Project Deliverables & Outcomes</h2>
+        <div class="card" style="text-align: center; padding: 40px;">
+            <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+                This section contains the comprehensive documentation, presentations, and technical resources generated during the execution of <strong>Project #49: Hybrid MMAS-ABC for Sustainable Bus Optimization</strong>.
+            </p>
+
+            <div class="outcome-grid">
+                
+                <div class="outcome-card" style="border-top-color: #e74c3c;">
+                    <i class="fas fa-file-powerpoint outcome-icon" style="color: #e74c3c;"></i>
+                    <h3>Project Presentation</h3>
+                    <p style="color: #666; margin-bottom: 15px;">The final defense slides covering the problem statement, methodology, algorithm logic, and key results.</p>
+                    <a href="files/Project_Presentation.pptx" download class="outcome-btn">
+                        <i class="fas fa-download"></i> Download PPT
+                    </a>
+                </div>
+
+                <div class="outcome-card" style="border-top-color: #3498db;">
+                    <i class="fas fa-file-pdf outcome-icon" style="color: #3498db;"></i>
+                    <h3>Technical Report</h3>
+                    <p style="color: #666; margin-bottom: 15px;">The complete project report detailing the literature review, MMAS-ABC implementation, and code documentation.</p>
+                    <a href="files/Project_Report.pdf" download class="outcome-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+
+                <div class="outcome-card" style="border-top-color: #f1c40f;">
+                    <i class="fas fa-image outcome-icon" style="color: #f1c40f;"></i>
+                    <h3>Research Poster</h3>
+                    <p style="color: #666; margin-bottom: 15px;">A summary visual poster suitable for conferences, highlighting the algorithm's impact on efficiency.</p>
+                    <a href="files/Research_Poster.pdf" download class="outcome-btn">
+                        <i class="fas fa-download"></i> Download Poster
+                    </a>
+                </div>
+
+                <div class="outcome-card" style="border-top-color: #306998;">
+                    <i class="fab fa-python outcome-icon" style="color: #306998;"></i>
+                    <h3>Data & Processing</h3>
+                    <p style="color: #666; margin-bottom: 15px;">
+                        Backend repository containing data cleaning scripts, the EL algorithm logic, and emissions processing.
+                    </p>
+                    <a href="https://github.com/kkarthikpai/el-phase-2-data-and-dataprocesing" target="_blank" class="outcome-btn" style="background-color: #306998;">
+                        <i class="fas fa-code-branch"></i> View Backend Repo
+                    </a>
+                </div>
+
+                <div class="outcome-card" style="border-top-color: #e34c26;">
+                    <i class="fas fa-laptop-code outcome-icon" style="color: #e34c26;"></i>
+                    <h3>Website Source</h3>
+                    <p style="color: #666; margin-bottom: 15px;">
+                        Frontend repository containing the AlgoTransit website code, HTML/CSS structure, and UI assets.
+                    </p>
+                    <a href="https://github.com/kkarthikpai/AlgoTransit" target="_blank" class="outcome-btn" style="background-color: #e34c26;">
+                        <i class="fab fa-github"></i> View Website Repo
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer><p>RV College of Engineering | AlgoTransit - Project #49</p></footer>
+
+</body>
+</html>

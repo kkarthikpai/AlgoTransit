@@ -10,26 +10,19 @@
         .selector-container { text-align: center; margin-bottom: 30px; }
         select { padding: 12px; font-size: 16px; min-width: 300px; border-radius: 5px; border: 2px solid #3498db; }
         
-        /* Grid for 2 Images */
-        .image-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px; 
-            margin-bottom: 25px; 
-        }
-        .finding-img { width: 100%; border: 1px solid #ccc; border-radius: 5px; }
-        
-        .results-display { display: none; /* Hidden until loaded */ }
-        
-        .download-btn { 
-            display: inline-block; padding: 12px 25px; background: #27ae60; 
-            color: white; text-decoration: none; border-radius: 5px; font-weight: bold; 
+        .section-header {
+            background: #ecf0f1; padding: 10px; border-left: 5px solid #2c3e50;
+            margin-top: 30px; margin-bottom: 15px; color: #2c3e50;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .image-grid { grid-template-columns: 1fr; }
-        }
+        .image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .single-image-container { display: flex; justify-content: center; margin-bottom: 25px; }
+        .finding-img { width: 100%; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .half-width { max-width: 80%; } 
+        
+        .results-display { display: none; }
+
+        @media (max-width: 768px) { .image-grid { grid-template-columns: 1fr; } .half-width { max-width: 100%; } }
     </style>
 </head>
 <body>
@@ -42,16 +35,17 @@
                 <li><a href="problem.html">Problem & Solution</a></li>
                 <li><a href="tools.html">Tools & Feedback</a></li>
                 <li><a href="findings.html" class="active">Findings</a></li>
+                <li><a href="outcomes.html">Outcomes</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <h2 class="section-title">📊 Data Analysis & Findings</h2>
+        <h2 class="section-title">📊 Dataset Analysis & Graphs</h2>
         
         <div class="selector-container">
-            <label for="datasetSelect" style="font-weight: bold;">Select Dataset:</label><br><br>
+            <label for="datasetSelect" style="font-weight: bold;">Select Dataset to Analyze:</label><br><br>
             <select id="datasetSelect" onchange="updateView()">
                 <option value="set1">Dataset 1</option>
                 <option value="set2">Dataset 2</option>
@@ -62,29 +56,44 @@
         </div>
 
         <div id="resultsArea" class="card results-display">
-            <h3 id="resultTitle" style="color: #2c3e50; margin-bottom: 20px;"></h3>
+            <h3 id="resultTitle" style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">Dataset Results</h3>
             
+            <h4 class="section-header"><i class="fas fa-route"></i> A. Optimized Driving Cycles</h4>
             <div class="image-grid">
                 <div>
-                    <h4 style="text-align: center; color: #2c3e50; margin-bottom: 10px;">Optimised Driving Cycle</h4>
-                    <img id="imgLine" src="" alt="Optimised Driving Cycle" class="finding-img">
+                    <h5 style="text-align: center; color: #555;">Raw vs Optimized (Line Graph)</h5>
+                    <img id="imgLine" src="" alt="Optimised Cycle" class="finding-img">
                 </div>
-                
                 <div>
-                    <h4 style="text-align: center; color: #2c3e50; margin-bottom: 10px;">Optimised Driving Cycle (After Removing Data Irregularities)</h4>
-                    <img id="imgNoLine" src="" alt="After Removing Irregularities" class="finding-img">
+                    <h5 style="text-align: center; color: #555;">Scatter View (Anomaly Removal)</h5>
+                    <img id="imgNoLine" src="" alt="Scatter View" class="finding-img">
+                </div>
+            </div>
+
+            <h4 class="section-header"><i class="fas fa-traffic-light"></i> B. Congestion Hotspot Analysis</h4>
+            <div class="single-image-container">
+                <div class="half-width">
+                    <img id="imgCongestion" src="" alt="Congestion Graph" class="finding-img">
+                </div>
+            </div>
+
+            <h4 class="section-header"><i class="fas fa-smog"></i> C. Environmental Impact (CO₂ & Emissions)</h4>
+            <div class="single-image-container">
+                <div class="half-width">
+                    <img id="imgEmission" src="" alt="Emission Graph" class="finding-img">
+                </div>
+            </div>
+
+            <h4 class="section-header"><i class="fas fa-check-circle"></i> D. Model Validation</h4>
+            <div class="single-image-container">
+                <div class="half-width">
+                    <img id="imgValidation" src="" alt="Validation Graph" class="finding-img">
                 </div>
             </div>
 
             <div style="background: #f9f9f9; padding: 20px; border-left: 4px solid #3498db; margin-top: 20px;">
-                <h4>📝 Analysis:</h4>
+                <h4>📝 Key Observations:</h4>
                 <p id="resultDesc" style="line-height: 1.6; color: #444; margin-top: 5px;"></p>
-            </div>
-
-            <div style="text-align: center; margin-top: 25px;">
-                <a id="downloadLink" href="" target="_blank" class="download-btn">
-                    <i class="fas fa-external-link-alt"></i> Go to Dataset
-                </a>
             </div>
         </div>
     </div>
@@ -92,65 +101,69 @@
     <footer><p>RV College of Engineering | AlgoTransit - Project #49</p></footer>
 
     <script>
-        // ============================================
-        //  FINAL DATA CONFIGURATION
-        // ============================================
         const findingsData = {
             "set1": {
                 title: "Dataset 1",
-                image1: "set1_line.png",   
-                image2: "set1_noline.png", 
-                desc: "The first graph demonstrates the 27.3% efficiency gain achieved by the Optimised Driving Cycle. The second graph demonstrates the 4.18% efficiency gain achieved by the Optimised Driving Cycle(After Removing Data Irregularities).",
-                link: "https://data.mendeley.com/datasets/39hjn56wkp/1/files/6e52a141-c234-43af-b668-a6510eb4ba00"
+                imageLine: "set1_line.png",   
+                imageNoLine: "set1_noline.png",
+                imageCongestion: "set1_congestion.png",
+                imageEmission: "set1_emission.png",
+                imageValidation: "set1_validation.png",
+                desc: "The analysis demonstrates a +1.5% gain in Fuel Efficiency in Raw vs Optimized (Line Graph), alongside 1.98% gain in Fuel Efficiency in Scatter View (Anomaly Removal). With 6.0% of the trip spent in Congestion (<20 km/h), the model achieved a -2.0% reduction in Emissions (10.69 kg saved). Finally, an Accuracy RMSE of 7.74 confirms realistic optimization."
             },
             "set2": {
                 title: "Dataset 2",
-                image1: "set2_line.png",
-                image2: "set2_noline.png",
-                desc: "The first graph demonstrates the 32.1% efficiency gain achieved by the Optimised Driving Cycle. The second graph demonstrates the 7.38% efficiency gain achieved by the Optimised Driving Cycle(After Removing Data Irregularities).",
-                link: "https://data.mendeley.com/datasets/39hjn56wkp/1/files/537ce0ab-291b-457a-98ff-129d4c3ce2b3"
+                imageLine: "set2_line.png",
+                imageNoLine: "set2_noline.png",
+                imageCongestion: "set2_congestion.png",
+                imageEmission: "set2_emission.png",
+                imageValidation: "set2_validation.png",
+                desc: "The analysis demonstrates a +2.2% gain in Fuel Efficiency in Raw vs Optimized (Line Graph), alongside 2.57% gain in Fuel Efficiency in Scatter View (Anomaly Removal). With 5.3% of the trip spent in Congestion (<20 km/h), the model achieved a -2.6% reduction in Emissions (13.08 kg saved). Finally, an Accuracy RMSE of 8.72 confirms realistic optimization."
             },
             "set3": {
                 title: "Dataset 3",
-                image1: "set3_line.png",
-                image2: "set3_noline.png",
-                desc: "The first graph demonstrates the 19.8% efficiency gain achieved by the Optimised Driving Cycle. The second graph demonstrates the 4.66% efficiency gain achieved by the Optimised Driving Cycle(After Removing Data Irregularities).",
-                link: "https://data.mendeley.com/datasets/39hjn56wkp/1/files/deec6067-ff9a-4174-8506-da8fa3916961"
+                imageLine: "set3_line.png",
+                imageNoLine: "set3_noline.png",
+                imageCongestion: "set3_congestion.png",
+                imageEmission: "set3_emission.png",
+                imageValidation: "set3_validation.png",
+                desc: "The analysis demonstrates a +3.3% gain in Fuel Efficiency in Raw vs Optimized (Line Graph), alongside 4.11% gain in Fuel Efficiency in Scatter View (Anomaly Removal). With 38.6% of the trip spent in Congestion (<20 km/h), the model achieved a -4.1% reduction in Emissions (16.97 kg saved). Finally, an Accuracy RMSE of 6.82 confirms realistic optimization."
             },
             "set4": {
                 title: "Dataset 4",
-                image1: "set4_line.png",
-                image2: "set4_noline.png",
-                desc: "The first graph demonstrates the 20.6% efficiency gain achieved by the Optimised Driving Cycle. The second graph demonstrates the 5.05% efficiency gain achieved by the Optimised Driving Cycle(After Removing Data Irregularities).",
-                link: "https://data.mendeley.com/datasets/39hjn56wkp/1/files/9e099df1-d5ad-4257-a367-46c94c7e325f"
+                imageLine: "set4_line.png",
+                imageNoLine: "set4_noline.png",
+                imageCongestion: "set4_congestion.png",
+                imageEmission: "set4_emission.png",
+                imageValidation: "set4_validation.png",
+                desc: "The analysis demonstrates a +2.5% gain in Fuel Efficiency in Raw vs Optimized (Line Graph), alongside 3.17% gain in Fuel Efficiency in Scatter View (Anomaly Removal). With 23.1% of the trip spent in Congestion (<20 km/h), the model achieved a -3.2% reduction in Emissions (10.39 kg saved). Finally, an Accuracy RMSE of 7.09 confirms realistic optimization."
             },
             "set5": {
                 title: "Dataset 5",
-                image1: "set5_line.png",
-                image2: "set5_noline.png",
-                desc: "The first graph demonstrates the 28.7% efficiency gain achieved by the Optimised Driving Cycle. The second graph demonstrates the 3.50% efficiency gain achieved by the Optimised Driving Cycle(After Removing Data Irregularities).",
-                link: "https://data.mendeley.com/datasets/39hjn56wkp/1/files/cdc098b7-f541-4d0f-9e2e-689f33fa722f"
+                imageLine: "set5_line.png",
+                imageNoLine: "set5_noline.png",
+                imageCongestion: "set5_congestion.png",
+                imageEmission: "set5_emission.png",
+                imageValidation: "set5_validation.png",
+                desc: "The analysis demonstrates a +1.8% gain in Fuel Efficiency in Raw vs Optimized (Line Graph), alongside 2.09% gain in Fuel Efficiency in Scatter View (Anomaly Removal). With 4.9% of the trip spent in Congestion (<20 km/h), the model achieved a -2.1% reduction in Emissions (7.49 kg saved). Finally, an Accuracy RMSE of 8.50 confirms realistic optimization."
             }
         };
 
-        // Function to update the page
         function updateView() {
             const selector = document.getElementById('datasetSelect');
             const data = findingsData[selector.value];
-
             if (data) {
                 document.getElementById('resultTitle').textContent = data.title;
-                document.getElementById('imgLine').src = data.image1;
-                document.getElementById('imgNoLine').src = data.image2;
+                document.getElementById('imgLine').src = data.imageLine;
+                document.getElementById('imgNoLine').src = data.imageNoLine;
+                document.getElementById('imgCongestion').src = data.imageCongestion;
+                document.getElementById('imgEmission').src = data.imageEmission;
+                document.getElementById('imgValidation').src = data.imageValidation;
                 document.getElementById('resultDesc').textContent = data.desc;
-                document.getElementById('downloadLink').href = data.link;
                 document.getElementById('resultsArea').style.display = "block";
             }
         }
-
-        // Load the first dataset automatically
         window.onload = updateView;
     </script>
-
 </body>
 </html>
